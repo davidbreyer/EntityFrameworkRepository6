@@ -1,0 +1,9 @@
+## Ignore the NuGet packages folder in the root of the repository
+packages
+bin
+obj
+TestResults
+
+#include package target files which may be required for msbuild
+!packages/*.targets
+*.user

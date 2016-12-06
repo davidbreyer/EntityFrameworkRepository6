@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkRepository6", "EntityFrameworkRepository6\EntityFrameworkRepository6.csproj", "{0DB0F16E-6AED-4677-9954-C9F1DD69A020}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB5DA1ED-73CF-41FE-8E50-D21372107C3D}"
+	ProjectSection(SolutionItems) = preProject
+		.tfignore = .tfignore
+		EntityFrameworkRepository6.nuspec = EntityFrameworkRepository6.nuspec
+		nuget.exe = nuget.exe
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseInitialization", "DatabaseInitialization\DatabaseInitialization.csproj", "{2D4C3ED5-34D9-4BFC-9987-D969ED02D2F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistentLayer", "PersistentLayer\PersistentLayer.csproj", "{0E1BFBEA-3C3B-4063-B301-543D07F2DE5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkRepository6Tests", "EntityFrameworkRepository6Tests\EntityFrameworkRepository6Tests.csproj", "{E2231BA0-E54C-402F-B076-A1010C577E42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DB0F16E-6AED-4677-9954-C9F1DD69A020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DB0F16E-6AED-4677-9954-C9F1DD69A020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DB0F16E-6AED-4677-9954-C9F1DD69A020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DB0F16E-6AED-4677-9954-C9F1DD69A020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4C3ED5-34D9-4BFC-9987-D969ED02D2F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4C3ED5-34D9-4BFC-9987-D969ED02D2F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4C3ED5-34D9-4BFC-9987-D969ED02D2F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4C3ED5-34D9-4BFC-9987-D969ED02D2F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1BFBEA-3C3B-4063-B301-543D07F2DE5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1BFBEA-3C3B-4063-B301-543D07F2DE5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1BFBEA-3C3B-4063-B301-543D07F2DE5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1BFBEA-3C3B-4063-B301-543D07F2DE5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2231BA0-E54C-402F-B076-A1010C577E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2231BA0-E54C-402F-B076-A1010C577E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2231BA0-E54C-402F-B076-A1010C577E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2231BA0-E54C-402F-B076-A1010C577E42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
