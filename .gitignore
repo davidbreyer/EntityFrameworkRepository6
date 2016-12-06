@@ -7,3 +7,4 @@ TestResults
 #include package target files which may be required for msbuild
 !packages/*.targets
 *.user
+*.suo
