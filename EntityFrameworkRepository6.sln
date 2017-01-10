@@ -19,6 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistentLayer", "Persiste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkRepository6Tests", "EntityFrameworkRepository6Tests\EntityFrameworkRepository6Tests.csproj", "{E2231BA0-E54C-402F-B076-A1010C577E42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkAuditableRepository6", "EntityFrameworkAuditableRepository6\EntityFrameworkAuditableRepository6.csproj", "{56FCFB02-E7F9-4E74-8C7D-B412A41203CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
