@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{56FCFB02-E7F9-4E74-8C7D-B412A41203CC}</ProjectGuid>
+    <ProjectGuid>{EA0B93F9-4C12-47C3-B38D-C6D4B51AA4B0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityFrameworkAuditableRepository6</RootNamespace>
-    <AssemblyName>EntityFrameworkAuditableRepository6</AssemblyName>
+    <RootNamespace>AuditDbContext</RootNamespace>
+    <AssemblyName>AuditDbContext</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,21 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseContext.cs" />
-    <Compile Include="BaseRepository.cs" />
-    <Compile Include="DatabaseFactory.cs" />
-    <Compile Include="Delta.cs" />
+    <Compile Include="AuditableEntity.cs" />
+    <Compile Include="AuditDbContext.cs" />
+    <Compile Include="AuditEntity.cs" />
+    <Compile Include="AuditTypeInfo.cs" />
+    <Compile Include="Configuration\AuditConfigurationSection.cs" />
+    <Compile Include="Configuration\EntityElement.cs" />
+    <Compile Include="Configuration\EntityElementCollection.cs" />
+    <Compile Include="IAuditableEntity.cs" />
+    <Compile Include="IAuditEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AuditDbContextLocal\AuditDbContext.csproj">
-      <Project>{ea0b93f9-4c12-47c3-b38d-c6d4b51aa4b0}</Project>
-      <Name>AuditDbContext</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

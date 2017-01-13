@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace EntityFrameworkAuditableRepository6.Base
 {
-    public class BaseContext<TContext> : DbContext
+    public class BaseContext<TContext> : AuditDbContext
             where TContext : AuditDbContext
     {
         static BaseContext()
@@ -12,7 +12,7 @@ namespace EntityFrameworkAuditableRepository6.Base
             //Database.SetInitializer<TContext>(null);
         }
 
-        protected BaseContext(DbConnection dbConnection) : base(dbConnection, true) { Database.SetInitializer<TContext>(null); }
+        protected BaseContext(DbConnection dbConnection) : base(dbConnection) { Database.SetInitializer<TContext>(null); }
 
         protected BaseContext(string connectionString) : base(connectionString) { Database.SetInitializer<TContext>(null); }
 
@@ -21,7 +21,7 @@ namespace EntityFrameworkAuditableRepository6.Base
             Database.SetInitializer<TContext>(initializerStrategy);
         }
 
-        protected BaseContext(DbConnection dbConnection, IDatabaseInitializer<TContext> initializerStrategy) : base(dbConnection, true)
+        protected BaseContext(DbConnection dbConnection, IDatabaseInitializer<TContext> initializerStrategy) : base(dbConnection)
         {
             Database.SetInitializer<TContext>(initializerStrategy);
         }

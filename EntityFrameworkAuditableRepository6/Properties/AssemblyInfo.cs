@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("David Breyer")]
 [assembly: AssemblyProduct("EntityFrameworkAuditableRepository6")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCopyright("Copyright © David Breyer 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

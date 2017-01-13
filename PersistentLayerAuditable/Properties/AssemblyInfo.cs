@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EntityFrameworkRepository6Tests")]
+[assembly: AssemblyTitle("PersistentLayerAuditable")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("David Breyer")]
-[assembly: AssemblyProduct("EntityFrameworkRepository6Tests")]
+[assembly: AssemblyProduct("PersistentLayerAuditable")]
 [assembly: AssemblyCopyright("Copyright © David Breyer 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e2231ba0-e54c-402f-b076-a1010c577e42")]
+[assembly: Guid("76147a0c-3d03-4e4b-91e3-3de5b86bc231")]
 
 // Version information for an assembly consists of the following four values:
 //

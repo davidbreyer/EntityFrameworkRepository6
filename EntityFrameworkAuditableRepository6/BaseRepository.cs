@@ -12,6 +12,7 @@ namespace EntityFrameworkAuditableRepository6.Base
             where T : class
             where C : AuditDbContext
     {
+        C Context { get; set; }
         IQueryable<T> GetAll();
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         IQueryable<T> FindByReadOnly(Expression<Func<T, bool>> predicate);
