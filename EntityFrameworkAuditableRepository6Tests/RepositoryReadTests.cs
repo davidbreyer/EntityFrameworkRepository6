@@ -41,8 +41,9 @@ namespace EntityFrameworkAuditableRepository6Tests
                 , new InjectionProperty("Logging", logSetup));
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void GetAllFromSimpleDataEntitiesTable()
+        public void GetAllFromSimpleDataEntitiesTableAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
 
@@ -52,8 +53,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void FindTestMethod1()
+        public void FindTestMethod1Audit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
 
@@ -63,8 +65,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void SelectTestMethod()
+        public void SelectTestMethodAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
 
@@ -74,8 +77,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void FindAsyncTest()
+        public void FindAsyncTestAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
 
@@ -85,8 +89,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void FindAsyncMultipleParamsTest()
+        public void FindAsyncMultipleParamsTestAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleCompositeKeyEntityRepository>();
 

@@ -39,6 +39,7 @@ namespace EntityFrameworkRepository6Tests
                 , new InjectionProperty("Logging", logSetup));
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void InsertTestMethod()
         {
@@ -56,6 +57,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void InsertTestMethod2()
         {
@@ -73,6 +75,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void InsertTestMethod3()
         {
@@ -90,6 +93,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void InsertIntoCompositeKeyTableMethod()
         {
@@ -112,6 +116,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         [ExpectedException(typeof(DbUpdateException))]
         public void InsertDuplicateIntoCompositeKeyTableMethod()

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AuditDbContext")]
-[assembly: AssemblyDescription("EntityFramework.Auditing")]
+[assembly: AssemblyTitle("EntityFramework.Auditing.Test")]
+[assembly: AssemblyDescription("EntityFramework.Auditing.Test")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Russell Wilkins")]
-[assembly: AssemblyProduct("EntityFramework.Auditing")]
+[assembly: AssemblyProduct("EntityFramework.Auditing.Test")]
 [assembly: AssemblyCopyright("Copyright © Russell Wilkins 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ea0b93f9-4c12-47c3-b38d-c6d4b51aa4b0")]
+[assembly: Guid("f85139d8-97fd-4db6-8f95-31349d3d7674")]
 
 // Version information for an assembly consists of the following four values:
 //

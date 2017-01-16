@@ -37,6 +37,7 @@ namespace EntityFrameworkRepository6Tests
                 , new InjectionProperty("Logging", logSetup));
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void GetAllFromSimpleDataEntitiesTable()
         {
@@ -48,6 +49,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void FindTestMethod1()
         {
@@ -59,6 +61,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void SelectTestMethod()
         {
@@ -70,6 +73,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void FindAsyncTest()
         {
@@ -81,6 +85,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void FindAsyncMultipleParamsTest()
         {

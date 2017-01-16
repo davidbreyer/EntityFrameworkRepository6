@@ -42,8 +42,9 @@ namespace EntityFrameworkAuditableRepository6Tests
                 , new InjectionProperty("Logging", logSetup));
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void InsertTestMethod()
+        public void InsertTestMethodAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
             var newItem = new SimpleDataEntity { Name = "My Test" };
@@ -59,8 +60,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void InsertTestMethod2()
+        public void InsertTestMethod2Audit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
             var newItem = new SimpleDataEntity { Name = "My Test 200" };
@@ -76,8 +78,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void InsertTestMethod3()
+        public void InsertTestMethod3Audit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
             var newItem = new SimpleDataEntity { Name = "My Test 300" };
@@ -93,8 +96,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void InsertIntoCompositeKeyTableMethod()
+        public void InsertIntoCompositeKeyTableMethodAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleCompositeKeyEntityRepository>();
             var newItem = new SimpleCompositeKeyEntity { Id = 1, Name = "Composite Test" };
@@ -115,9 +119,10 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
         [ExpectedException(typeof(DbUpdateException))]
-        public void InsertDuplicateIntoCompositeKeyTableMethod()
+        public void InsertDuplicateIntoCompositeKeyTableMethodAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleCompositeKeyEntityRepository>();
             var newItem = new SimpleCompositeKeyEntity { Id = 1, Name = "Composite Test" };

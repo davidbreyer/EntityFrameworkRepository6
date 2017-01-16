@@ -64,9 +64,9 @@
     <Compile Include="Repositories\SimpleDataEntityRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AuditDbContextLocal\AuditDbContext.csproj">
+    <ProjectReference Include="..\AuditDbContextLocal\EntityFramework.Auditing.csproj">
       <Project>{ea0b93f9-4c12-47c3-b38d-c6d4b51aa4b0}</Project>
-      <Name>AuditDbContext</Name>
+      <Name>EntityFramework.Auditing</Name>
     </ProjectReference>
     <ProjectReference Include="..\EntityFrameworkAuditableRepository6\EntityFrameworkAuditableRepository6.csproj">
       <Project>{56fcfb02-e7f9-4e74-8c7d-b412a41203cc}</Project>

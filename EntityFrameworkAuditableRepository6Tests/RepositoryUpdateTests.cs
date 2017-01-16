@@ -45,9 +45,10 @@ namespace EntityFrameworkAuditableRepository6Tests
                 , new HierarchicalLifetimeManager()
                 , new InjectionProperty("Logging", logSetup));
         }
-        
+
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void UpdateTestMethod()
+        public void UpdateTestMethodAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
             
@@ -63,8 +64,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void UpdateTestMethodWithIgnoreFieldFeature()
+        public void UpdateTestMethodWithIgnoreFieldFeatureAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
             repository.AddUpdateIgnoreField("Name");
@@ -81,8 +83,9 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void UpdateByTestMethod()
+        public void UpdateByTestMethodAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
 
@@ -98,6 +101,7 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
         public void UpdateByAuditTestMethod()
         {
@@ -125,9 +129,10 @@ namespace EntityFrameworkAuditableRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
         [ExpectedException(typeof(System.Exception))]
-        public void UpdateByTestMethodIncorrectId()
+        public void UpdateByTestMethodIncorrectIdAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
 

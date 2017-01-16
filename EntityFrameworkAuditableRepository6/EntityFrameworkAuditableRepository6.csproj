@@ -61,9 +61,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AuditDbContextLocal\AuditDbContext.csproj">
+    <ProjectReference Include="..\AuditDbContextLocal\EntityFramework.Auditing.csproj">
       <Project>{ea0b93f9-4c12-47c3-b38d-c6d4b51aa4b0}</Project>
-      <Name>AuditDbContext</Name>
+      <Name>EntityFramework.Auditing</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

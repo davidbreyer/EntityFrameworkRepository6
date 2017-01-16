@@ -39,6 +39,7 @@ namespace EntityFrameworkRepository6Tests
                 , new InjectionProperty("Logging", logSetup));
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void DeltaTest1()
         {
@@ -58,6 +59,7 @@ namespace EntityFrameworkRepository6Tests
             Assert.AreEqual("Delta Change Test", updatedValue.Name);
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void DeltaTestWrongDataType1()
@@ -71,6 +73,7 @@ namespace EntityFrameworkRepository6Tests
             delta1.SetValue("Name", 1);
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void DeltaTestInvalidFieldName1()

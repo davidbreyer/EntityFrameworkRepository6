@@ -40,7 +40,8 @@ namespace EntityFrameworkRepository6Tests
                 , new HierarchicalLifetimeManager()
                 , new InjectionProperty("Logging", logSetup));
         }
-        
+
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void UpdateTestMethod()
         {
@@ -58,6 +59,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void UpdateTestMethodWithIgnoreFieldFeature()
         {
@@ -76,6 +78,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         public void UpdateByTestMethod()
         {
@@ -93,6 +96,7 @@ namespace EntityFrameworkRepository6Tests
             repository.Dispose();
         }
 
+        [TestCategory("StandardRepository")]
         [TestMethod]
         [ExpectedException(typeof(System.Exception))]
         public void UpdateByTestMethodIncorrectId()

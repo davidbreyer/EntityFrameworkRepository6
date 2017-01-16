@@ -2,11 +2,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Microsoft.Practices.Unity;
-using PersistentLayer.Repositories;
-using EntityFrameworkRepository6.Base;
 using System.Linq;
-using PersistentLayer.Entities;
 using System.Data.Entity.Infrastructure;
+using PersistentLayerAuditable.Repositories;
+using EntityFrameworkAuditableRepository6.Base;
+using EntityFrameworkAuditableRepository6Tests;
+using PersistentLayerAuditable.Entities;
 
 namespace EntityFrameworkRepository6Tests
 {
@@ -39,8 +40,9 @@ namespace EntityFrameworkRepository6Tests
                 , new InjectionProperty("Logging", logSetup));
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
-        public void DeltaTest1()
+        public void DeltaTest1Audit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
             var newItem = new SimpleDataEntity { Name = "Delta Test" };
@@ -58,9 +60,10 @@ namespace EntityFrameworkRepository6Tests
             Assert.AreEqual("Delta Change Test", updatedValue.Name);
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void DeltaTestWrongDataType1()
+        public void DeltaTestWrongDataType1Audit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
             var newItem = new SimpleDataEntity { Name = "Delta Test" };
@@ -71,9 +74,10 @@ namespace EntityFrameworkRepository6Tests
             delta1.SetValue("Name", 1);
         }
 
+        [TestCategory("AuditRepository")]
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void DeltaTestInvalidFieldName1()
+        public void DeltaTestInvalidFieldName1Audit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
             var newItem = new SimpleDataEntity { Name = "Delta Test" };
