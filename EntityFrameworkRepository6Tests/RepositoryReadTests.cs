@@ -51,6 +51,18 @@ namespace EntityFrameworkRepository6Tests
 
         [TestCategory("StandardRepository")]
         [TestMethod]
+        public void CountOfSimpleDataEntitiesTable()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            var actual = repository.Count();
+            Assert.AreEqual(7, actual);
+
+            repository.Dispose();
+        }
+
+        [TestCategory("StandardRepository")]
+        [TestMethod]
         public void FindTestMethod1()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();

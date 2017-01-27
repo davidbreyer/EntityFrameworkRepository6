@@ -30,6 +30,8 @@ namespace EntityFrameworkRepository6.Base
         Task<T> FindAsync(params object[] ids);
         bool Exists(Expression<Func<T, bool>> predicate);
         void AddUpdateIgnoreField(string fieldName);
+        int Count();
+        Task<int> CountAsync();
     }
 
     public abstract class BaseRepository<C, T> : IBaseRepository<C, T>,
@@ -184,6 +186,16 @@ namespace EntityFrameworkRepository6.Base
         public virtual int Save()
         {
             return Context.SaveChanges();
+        }
+
+        public virtual int Count()
+        {
+            return Context.Set<T>().Count();
+        }
+
+        public async virtual Task<int> CountAsync()
+        {
+            return await Context.Set<T>().CountAsync();
         }
 
         #region IDisposable Support

@@ -55,6 +55,18 @@ namespace EntityFrameworkAuditableRepository6Tests
 
         [TestCategory("AuditRepository")]
         [TestMethod]
+        public void CountOfSimpleDataEntitiesTableAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            var actual = repository.Count();
+            Assert.AreEqual(7, actual);
+
+            repository.Dispose();
+        }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
         public void FindTestMethod1Audit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
