@@ -200,6 +200,16 @@ namespace EntityFramework.Auditing
 
         /// <summary>
         /// Saves all changes made in this context to the underlying database
+        /// using the current windows user for auditing.
+        /// </summary>
+        /// <returns>The number of objects written to the underlying database.</returns>
+        public override async Task<int> SaveChangesAsync()
+        {
+            return await this.SaveChangesAsync(WindowsIdentity.GetCurrent().Name);
+        }
+
+        /// <summary>
+        /// Saves all changes made in this context to the underlying database
         /// using the user paramater passed for auditing.
         /// </summary>
         /// <param name="user">User name for auditing.</param>

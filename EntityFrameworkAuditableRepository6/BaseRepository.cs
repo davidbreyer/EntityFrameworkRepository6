@@ -26,6 +26,8 @@ namespace EntityFrameworkAuditableRepository6.Base
         void Update(Delta<T> delta, params object[] ids);
         Task<int> SaveAsync();
         int Save();
+        Task<int> SaveAsync(string userName);
+        int Save(string userName);
         T Find(int id);
         T Find(params object[] ids);
         Task<T> FindAsync(int id);
@@ -188,6 +190,16 @@ namespace EntityFrameworkAuditableRepository6.Base
         public virtual int Save()
         {
             return Context.SaveChanges();
+        }
+
+        public async virtual Task<int> SaveAsync(string userName)
+        {
+            return await Context.SaveChangesAsync(userName);
+        }
+
+        public virtual int Save(string userName)
+        {
+            return Context.SaveChanges(userName);
         }
 
         public virtual int Count()
