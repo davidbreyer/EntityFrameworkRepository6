@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>EntityFrameworkRepository6</id>
-    <version>1.0.1</version>
-    <authors>David Breyer</authors>
+    <id>EntityFramework.Auditing</id>
+    <version>2.0.1</version>
+    <authors>David Breyer, Russell Wilkins</authors>
     <owners>David Breyer</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Entity Framework Repository</description>
+    <description>Entity Framework Auditing Context</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags></tags>
@@ -15,6 +15,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="EntityFrameworkRepository6\bin\Release\EntityFrameworkRepository6.dll" target="lib\net45" />
+    <file src="EntityFrameworkRepository6\AuditDbContextLocal\bin\Release\EntityFramework.Auditing.dll" target="lib\net45" />
   </files>
 </package>

@@ -17,6 +17,7 @@ namespace EntityFrameworkAuditableRepository6.Base
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         IQueryable<T> FindByReadOnly(Expression<Func<T, bool>> predicate);
         T Add(T entity);
+        IEnumerable<T> Add(IEnumerable<T> entities);
         void Delete(T entity);
         void Delete(IEnumerable<T> entities);
         void Reload(T entity);
@@ -129,6 +130,13 @@ namespace EntityFrameworkAuditableRepository6.Base
             Context.Set<T>().Add(entity);
 
             return entity;
+        }
+
+        public virtual IEnumerable<T> Add(IEnumerable<T> entities)
+        {
+            Context.Set<T>().AddRange(entities);
+
+            return entities;
         }
 
         public virtual void Update(T entity, int id)
