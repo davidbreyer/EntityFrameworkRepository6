@@ -15,6 +15,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="EntityFrameworkRepository6\AuditDbContextLocal\bin\Release\EntityFramework.Auditing.dll" target="lib\net45" />
+    <file src="AuditDbContextLocal\bin\Release\EntityFramework.Auditing.dll" target="lib\net45" />
   </files>
 </package>
