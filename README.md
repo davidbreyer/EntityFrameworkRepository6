@@ -47,4 +47,4 @@ Creating unit tests with an in-memory database with NMemory and Effort.
         }
     }
 ```
-[Getting Started with the Audit Context]
+[Getting Started with the Audit Context](https://github.com/davidbreyer/EntityFrameworkRepository6/wiki/Getting-Started-with-the-Audit-Context)
