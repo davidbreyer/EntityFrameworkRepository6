@@ -1,3 +1,6 @@
+CodeCoverageReport/* linguist-vendored
+CodeCoverageReport/* linguist-documentation
+
 # Auto detect text files and perform LF normalization
 * text=auto
 
@@ -15,5 +18,4 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
-$ cat .gitattributes
-CodeCoverageReport/* linguist-documentation=false
+
