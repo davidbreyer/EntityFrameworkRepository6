@@ -1,3 +1,5 @@
+![alt text](https://cdn.rawgit.com/davidbreyer/EntityFrameworkRepository6/master/badge_linecoverage.svg "Code Coverage")
+
 # Features:
 
 * Auditable
