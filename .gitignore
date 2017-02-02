@@ -9,3 +9,4 @@ TestResults
 *.user
 *.suo
 *.nupkg
+.vs/config/applicationhost.config
