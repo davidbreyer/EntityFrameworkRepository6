@@ -4,6 +4,7 @@
 * Testable
 * Supports Composite Keys
 * Supports Complex Types
+* Supports Predicates
 
 # Getting Started:
 
