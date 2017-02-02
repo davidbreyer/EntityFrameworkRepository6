@@ -1,4 +1,4 @@
-![alt text](https://cdn.rawgit.com/davidbreyer/EntityFrameworkRepository6/master/badge_linecoverage.svg "Code Coverage")
+[![Code Coverage](https://cdn.rawgit.com/davidbreyer/EntityFrameworkRepository6/master/badge_linecoverage.svg "Code Coverage")](https://cdn.rawgit.com/davidbreyer/EntityFrameworkRepository6/master/CodeCoverageReport/index.htm)
 
 # Features:
 
