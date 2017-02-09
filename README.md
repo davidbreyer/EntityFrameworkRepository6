@@ -18,7 +18,7 @@ PM> Install-Package EntityFramework.Auditing
 
 If you just want the Repository
 ```
-PM> Install-Package EntityFrameworkAuditableRepository6
+PM> Install-Package EntityFrameworkRepository6
 ```
 * [Getting Started with the Entity Framework 6 Repository Pattern](https://github.com/davidbreyer/EntityFrameworkRepository6/wiki/Entity-Framework-6-Repository-Pattern)
 
