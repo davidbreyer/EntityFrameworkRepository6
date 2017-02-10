@@ -1,5 +1,7 @@
 [![Code Coverage](https://cdn.rawgit.com/davidbreyer/EntityFrameworkRepository6/master/badge_linecoverage.svg "Code Coverage")](https://cdn.rawgit.com/davidbreyer/EntityFrameworkRepository6/master/CodeCoverageReport/index.htm)
 
+![Build](https://yellinglizard.visualstudio.com/_apis/public/build/definitions/28d3c4e6-cc52-4c99-ba3b-7ae738d4e6b1/4/badge "Build")
+
 # Features:
 
 * Auditable
