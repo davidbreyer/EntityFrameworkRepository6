@@ -7,6 +7,7 @@ using EntityFrameworkRepository6.Base;
 using System.Linq;
 using PersistentLayer.Entities;
 using System.Data.Entity.Infrastructure;
+using EntityFramework.SharedRepository;
 
 namespace EntityFrameworkRepository6Tests
 {

@@ -8,6 +8,7 @@ using PersistentLayerAuditable.Entities;
 using System.Data.Entity.Infrastructure;
 using EntityFrameworkAuditableRepository6.Base;
 using EntityFramework.Auditing;
+using EntityFrameworkRepository6.Base;
 
 namespace EntityFrameworkAuditableRepository6Tests
 {

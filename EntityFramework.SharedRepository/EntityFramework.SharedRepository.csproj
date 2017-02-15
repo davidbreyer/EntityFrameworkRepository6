@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0DB0F16E-6AED-4677-9954-C9F1DD69A020}</ProjectGuid>
+    <ProjectGuid>{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityFrameworkRepository6</RootNamespace>
-    <AssemblyName>EntityFrameworkRepository6</AssemblyName>
+    <RootNamespace>EntityFramework.SharedRepository</RootNamespace>
+    <AssemblyName>EntityFramework.SharedRepository</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,44 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\EntityFramework.SharedRepository\Delta.cs">
-      <Link>Interfaces\Delta.cs</Link>
-    </Compile>
-    <Compile Include="..\EntityFramework.SharedRepository\IAuditSaveFunctions.cs">
-      <Link>Interfaces\IAuditSaveFunctions.cs</Link>
-    </Compile>
-    <Compile Include="..\EntityFramework.SharedRepository\IBaseRepository.cs">
-      <Link>Interfaces\IBaseRepository.cs</Link>
-    </Compile>
-    <Compile Include="..\EntityFramework.SharedRepository\ICreateFunctions.cs">
-      <Link>Interfaces\ICreateFunctions.cs</Link>
-    </Compile>
-    <Compile Include="..\EntityFramework.SharedRepository\IDeleteFunctions.cs">
-      <Link>Interfaces\IDeleteFunctions.cs</Link>
-    </Compile>
-    <Compile Include="..\EntityFramework.SharedRepository\IReadFunctions.cs">
-      <Link>Interfaces\IReadFunctions.cs</Link>
-    </Compile>
-    <Compile Include="..\EntityFramework.SharedRepository\ISaveFunctions.cs">
-      <Link>Interfaces\ISaveFunctions.cs</Link>
-    </Compile>
-    <Compile Include="..\EntityFramework.SharedRepository\IUpdateFunctions.cs">
-      <Link>Interfaces\IUpdateFunctions.cs</Link>
-    </Compile>
-    <Compile Include="BaseContext.cs" />
-    <Compile Include="BaseRepository.cs" />
-    <Compile Include="DatabaseFactory.cs" />
+    <Compile Include="IAuditSaveFunctions.cs" />
+    <Compile Include="IBaseRepository.cs" />
     <Compile Include="Delta.cs" />
+    <Compile Include="ICreateFunctions.cs" />
+    <Compile Include="IDeleteFunctions.cs" />
+    <Compile Include="IReadFunctions.cs" />
+    <Compile Include="ISaveFunctions.cs" />
+    <Compile Include="IUpdateFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="readme.md" />
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

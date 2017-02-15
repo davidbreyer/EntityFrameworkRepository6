@@ -1,4 +1,7 @@
-﻿using EntityFrameworkAuditableRepository6.Base;
+﻿using EntityFramework.SharedRepository;
+using EntityFrameworkAuditableRepository6;
+using EntityFrameworkAuditableRepository6.Base;
+using EntityFrameworkRepository6.Base;
 using PersistentLayerAuditable.Contexts;
 using PersistentLayerAuditable.Entities;
 using System;
@@ -14,11 +17,11 @@ namespace PersistentLayerAuditable.Repositories
 
     }
 
-    public class SimpleCompositeKeyEntityRepository : BaseRepository<YourCustomDataContext, SimpleCompositeKeyEntity>, ISimpleCompositeKeyEntityRepository
+    public class SimpleCompositeKeyEntityRepository : AuditableBaseRepository<YourCustomDataContext, SimpleCompositeKeyEntity>, ISimpleCompositeKeyEntityRepository
     {
-        public SimpleCompositeKeyEntityRepository(IDatabaseFactory<YourCustomDataContext> dbFactory)
+        public SimpleCompositeKeyEntityRepository(IDatabaseFactory<YourCustomDataContext> dbFactory) : base(dbFactory.GetNewDbContext())
         {
-            Context = dbFactory.GetNewDbContext();
+            
         }
     }
 }

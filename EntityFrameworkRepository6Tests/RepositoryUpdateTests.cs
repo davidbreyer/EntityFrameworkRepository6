@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkRepository6.Base;
+using EntityFramework.SharedRepository;
 using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersistentLayer.Entities;

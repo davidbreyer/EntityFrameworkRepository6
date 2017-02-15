@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityFramework.SharedRepository;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,45 +8,29 @@ using System.Threading.Tasks;
 
 namespace EntityFrameworkRepository6.Base
 {
-    public interface IBaseRepository<C, T> : IDisposable
-            where T : class
-            where C : DbContext
-    {
-        IQueryable<T> GetAll();
-        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
-        IQueryable<T> FindByReadOnly(Expression<Func<T, bool>> predicate);
-        T Add(T entity);
-        IEnumerable<T> Add(IEnumerable<T> entities);
-        void Delete(T entity);
-        void Delete(IEnumerable<T> entities);
-        void Reload(T entity);
-        void ReloadAsync(T entity);
-        void Update(T entity, int id);
-        void Update(T entity, Expression<Func<T, bool>> predicate);
-        void Update(Delta<T> delta, params object[] ids);
-        Task<int> SaveAsync();
-        int Save();
-        T Find(int id);
-        T Find(params object[] ids);
-        Task<T> FindAsync(int id);
-        Task<T> FindAsync(params object[] ids);
-        bool Exists(Expression<Func<T, bool>> predicate);
-        void AddUpdateIgnoreField(string fieldName);
-        int Count();
-        Task<int> CountAsync();
-    }
-
-    public abstract class BaseRepository<C, T> : IBaseRepository<C, T>,
-            IDisposable
+    public abstract class BaseRepository<C, T> : 
+            IBaseRepository<C, T>
+            , IDisposable
         where T : class
         where C : DbContext
     {
-        public C Context { get; set; }
-        public Lazy<List<string>> IgnoreFieldsOnUpdate = new Lazy<List<string>>();
+        protected C Context { get; set; }
+        protected Lazy<List<string>> IgnoreFieldsOnUpdate = new Lazy<List<string>>();
+        protected Lazy<List<Expression<Func<T, bool>>>> IgnoreFieldsOnUpdate2 = new Lazy<List<Expression<Func<T, bool>>>>();
 
-        public void AddUpdateIgnoreField(string fieldName)
+        protected BaseRepository(C context)
+        {
+            Context = context;
+        }
+
+        public virtual void AddUpdateIgnoreField(string fieldName)
         {
             IgnoreFieldsOnUpdate.Value.Add(fieldName);
+        }
+
+        public virtual void AddUpdateIgnoreField(Expression<Func<T, bool>> fieldName)
+        {
+            IgnoreFieldsOnUpdate2.Value.Add(fieldName);
         }
 
         public virtual T Find(int id)
@@ -61,7 +46,7 @@ namespace EntityFrameworkRepository6.Base
 
             return entity;
         }
-        
+
         public virtual async Task<T> FindAsync(int id)
         {
             var query = Context.Set<T>().FindAsync(id);
@@ -174,16 +159,31 @@ namespace EntityFrameworkRepository6.Base
             MarkIgnoreFields(entityToUpdate);
         }
 
+        public void Update(Delta<T> delta, Expression<Func<T, bool>> predicate)
+        {
+            var entityToUpdate = Context.Set<T>().Where(predicate).SingleOrDefault();
+
+            if (entityToUpdate == null) throw new Exception(string.Format("{0} is not a valid identity key for {1}.", predicate.ToString(), typeof(T).Name));
+
+            foreach (string field in delta.UpdatedFields())
+            {
+                var fieldToSet = typeof(T).GetProperty(field);
+                var dataOrigion = delta.Internal.GetType().GetProperty(field);
+
+                fieldToSet.SetValue(entityToUpdate, dataOrigion.GetValue(delta.Internal));
+            }
+
+            MarkIgnoreFields(entityToUpdate);
+        }
+
         protected virtual void MarkIgnoreFields(T entityToUpdate)
         {
             if(IgnoreFieldsOnUpdate.IsValueCreated)
-            {
-                foreach(var item in IgnoreFieldsOnUpdate.Value)
-                {
-                    Context.Entry(entityToUpdate).Property(item).IsModified = false;
-                }
-            }
-            
+            { IgnoreFieldsOnUpdate.Value.ForEach(ignoreField => Context.Entry(entityToUpdate).Property(ignoreField).IsModified = false); }
+
+
+            if(IgnoreFieldsOnUpdate2.IsValueCreated)
+            { IgnoreFieldsOnUpdate2.Value.ForEach(ignoreField => Context.Entry(entityToUpdate).Property(ignoreField).IsModified = false); }
         }
 
         public async virtual Task<int> SaveAsync()

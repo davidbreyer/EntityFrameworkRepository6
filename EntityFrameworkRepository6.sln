@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Auditing", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Auditing.Test", "AuditDbContextTests\EntityFramework.Auditing.Test.csproj", "{F85139D8-97FD-4DB6-8F95-31349D3D7674}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.SharedRepository", "EntityFramework.SharedRepository\EntityFramework.SharedRepository.csproj", "{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{F85139D8-97FD-4DB6-8F95-31349D3D7674}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F85139D8-97FD-4DB6-8F95-31349D3D7674}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F85139D8-97FD-4DB6-8F95-31349D3D7674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

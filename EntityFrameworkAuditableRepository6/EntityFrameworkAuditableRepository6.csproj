@@ -50,6 +50,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\EntityFramework.SharedRepository\Delta.cs">
+      <Link>Interfaces\Delta.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFramework.SharedRepository\IAuditSaveFunctions.cs">
+      <Link>Interfaces\IAuditSaveFunctions.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFramework.SharedRepository\IBaseRepository.cs">
+      <Link>Interfaces\IBaseRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFramework.SharedRepository\ICreateFunctions.cs">
+      <Link>Interfaces\ICreateFunctions.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFramework.SharedRepository\IDeleteFunctions.cs">
+      <Link>Interfaces\IDeleteFunctions.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFramework.SharedRepository\IReadFunctions.cs">
+      <Link>Interfaces\IReadFunctions.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFramework.SharedRepository\ISaveFunctions.cs">
+      <Link>Interfaces\ISaveFunctions.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFramework.SharedRepository\IUpdateFunctions.cs">
+      <Link>Interfaces\IUpdateFunctions.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFrameworkRepository6\BaseContext.cs">
+      <Link>BaseRepository\BaseContext.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFrameworkRepository6\BaseRepository.cs">
+      <Link>BaseRepository\BaseRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\EntityFrameworkRepository6\DatabaseFactory.cs">
+      <Link>BaseRepository\DatabaseFactory.cs</Link>
+    </Compile>
+    <Compile Include="AuditableBaseRepository.cs" />
     <Compile Include="BaseContext.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DatabaseFactory.cs" />
@@ -66,6 +100,7 @@
       <Name>EntityFramework.Auditing</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,6 +8,8 @@ using PersistentLayerAuditable.Repositories;
 using EntityFrameworkAuditableRepository6.Base;
 using EntityFrameworkAuditableRepository6Tests;
 using PersistentLayerAuditable.Entities;
+using EntityFramework.SharedRepository;
+using EntityFrameworkRepository6.Base;
 
 namespace EntityFrameworkRepository6Tests
 {

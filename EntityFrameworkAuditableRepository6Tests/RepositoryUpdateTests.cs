@@ -8,6 +8,8 @@ using System;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Linq;
+using EntityFramework.SharedRepository;
+using EntityFrameworkRepository6.Base;
 
 namespace EntityFrameworkAuditableRepository6Tests
 {
@@ -74,7 +76,7 @@ namespace EntityFrameworkAuditableRepository6Tests
             var itemToUpdate = repository.Find(2);
             itemToUpdate.Name = "Updated Name";
             repository.Update(itemToUpdate, itemToUpdate.Id);
-            repository.Save();
+            repository.Save("UserName1");
 
             var actual = repository.Find(2);
 
@@ -114,17 +116,15 @@ namespace EntityFrameworkAuditableRepository6Tests
             itemToUpdate.Name = "Updated Name 3";
             repository.Update(itemToUpdate, x => x.Id == 2);
 
-            //repository.Context.SimpleDataEntityAudits.Add(new SimpleDataEntityAudit { AuditSourceId = 2, Name = "Updated Name 2" });
-            repository.Save();
+            repository.Save("UserName2");
 
             var actual = repository.Find(2);
 
-            
-
-            var auditactual = repository.Context.SimpleDataEntityAudits.Where(x => x.AuditSourceId == 2).FirstOrDefault();
+            var auditactual = repository.GetExistingContext().SimpleDataEntityAudits.Where(x => x.AuditSourceId == 2).FirstOrDefault();
 
             Assert.AreEqual("Updated Name 3", actual.Name);
             Assert.AreEqual("Test 2", auditactual?.Name);
+            Assert.AreEqual("UserName2", auditactual?.AuditUser);
 
             repository.Dispose();
         }

@@ -89,6 +89,17 @@ namespace EntityFramework.Auditing
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="contextOwnsConnection"></param>
+        public AuditDbContext(DbConnection connection, bool contextOwnsConnection)
+            : base(connection, contextOwnsConnection)
+        {
+
+        }
+
         #endregion
 
         /// <summary>
