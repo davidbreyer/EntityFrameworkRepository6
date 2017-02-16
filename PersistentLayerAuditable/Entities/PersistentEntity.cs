@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersistentLayerAuditable.Entities
+namespace PersistentLayer.Auditable.Entities
 {
     public abstract class PersistentEntity
     {

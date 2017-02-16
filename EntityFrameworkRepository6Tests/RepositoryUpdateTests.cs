@@ -1,6 +1,4 @@
-﻿using EntityFrameworkRepository6.Base;
-using EntityFramework.SharedRepository;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersistentLayer.Entities;
 using PersistentLayer.Repositories;
@@ -8,8 +6,10 @@ using System;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Linq;
+using EntityFramework.Repository6.Interfaces;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkRepository6Tests
+namespace EntityFramework.Repository6.Tests
 {
     [TestClass]
     public class RepositoryUpdateTests

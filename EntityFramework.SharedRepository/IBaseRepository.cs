@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace EntityFramework.SharedRepository
+namespace EntityFramework.Repository6.Interfaces
 {
     public interface IBaseRepository<C, T> : 
         IDisposable

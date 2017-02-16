@@ -1,4 +1,4 @@
-﻿using EntityFramework.SharedRepository;
+﻿using EntityFramework.Repository6.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace EntityFrameworkRepository6.Base
+namespace EntityFramework.Repository6
 {
     public abstract class BaseRepository<C, T> : 
             IBaseRepository<C, T>

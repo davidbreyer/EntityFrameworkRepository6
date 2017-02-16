@@ -1,16 +1,15 @@
-﻿using EntityFramework.SharedRepository;
-using EntityFrameworkAuditableRepository6;
-using EntityFrameworkAuditableRepository6.Base;
-using EntityFrameworkRepository6.Base;
-using PersistentLayerAuditable.Contexts;
-using PersistentLayerAuditable.Entities;
+﻿using EntityFramework.Auditable.Repository6;
+using EntityFramework.Repository6;
+using EntityFramework.Repository6.Interfaces;
+using PersistentLayer.Auditable.Contexts;
+using PersistentLayer.Auditable.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersistentLayerAuditable.Repositories
+namespace PersistentLayer.Auditable.Repositories
 {
     public interface ISimpleCompositeKeyEntityRepository : IBaseRepository<YourCustomDataContext, SimpleCompositeKeyEntity>
     {

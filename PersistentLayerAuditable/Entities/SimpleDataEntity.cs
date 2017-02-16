@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PersistentLayerAuditable.Entities
+namespace PersistentLayer.Auditable.Entities
 {
     public class SimpleDataEntity : AuditableEntity
     {

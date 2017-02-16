@@ -1,4 +1,4 @@
-﻿using EntityFrameworkRepository6.Base;
+﻿using EntityFramework.Repository6;
 using PersistentLayer.Entities;
 using System;
 using System.Collections.Generic;

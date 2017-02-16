@@ -1,5 +1,5 @@
-﻿using EntityFramework.SharedRepository;
-using EntityFrameworkRepository6.Base;
+﻿using EntityFramework.Repository6;
+using EntityFramework.Repository6.Interfaces;
 using PersistentLayer.Contexts;
 using PersistentLayer.Entities;
 using System;

@@ -67,9 +67,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntityFrameworkRepository6\EntityFrameworkRepository6.csproj">
+    <ProjectReference Include="..\EntityFrameworkRepository6\EntityFramework.Repository6.csproj">
       <Project>{0db0f16e-6aed-4677-9954-c9f1dd69a020}</Project>
-      <Name>EntityFrameworkRepository6</Name>
+      <Name>EntityFramework.Repository6</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

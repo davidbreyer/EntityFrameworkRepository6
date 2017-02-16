@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.SharedRepository
+namespace EntityFramework.Repository6
 {
     public class Delta<T> where T : class
     {

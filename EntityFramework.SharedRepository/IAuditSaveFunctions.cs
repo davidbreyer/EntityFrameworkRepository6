@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.SharedRepository
+namespace EntityFramework.Repository6.Interfaces
 {
-    public interface IAuditSaveFunctions<T> : IDisposable
+    public interface IAuditSaveFunctions<T>
             where T : class
     {
         Task<int> SaveAsync(string userName);

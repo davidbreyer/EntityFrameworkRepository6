@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>EntityFrameworkRepository6</id>
+    <id>EntityFramework.Repository6</id>
     <version>1.0.1</version>
     <authors>David Breyer</authors>
     <owners>David Breyer</owners>
@@ -15,6 +15,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="EntityFrameworkRepository6\bin\Release\EntityFrameworkRepository6.dll" target="lib\net45" />
+    <file src="EntityFrameworkRepository6\bin\Release\EntityFramework.Repository6.dll" target="lib\net45" />
   </files>
 </package>

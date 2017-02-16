@@ -3,13 +3,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Microsoft.Practices.Unity;
 using PersistentLayer.Repositories;
-using EntityFrameworkRepository6.Base;
 using System.Linq;
 using PersistentLayer.Entities;
 using System.Data.Entity.Infrastructure;
-using EntityFramework.SharedRepository;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkRepository6Tests
+namespace EntityFramework.Repository6.Tests
 {
     [TestClass]
     public class RepositoryCreateTests

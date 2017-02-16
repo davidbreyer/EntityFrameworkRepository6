@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.SharedRepository
+namespace EntityFramework.Repository6.Interfaces
 {
-    public interface IDeleteFunctions<T> : IDisposable
+    public interface IDeleteFunctions<T>
             where T : class
     {
         void Delete(T entity);

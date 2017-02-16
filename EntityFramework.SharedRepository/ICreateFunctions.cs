@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFramework.SharedRepository
+namespace EntityFramework.Repository6.Interfaces
 {
-    public interface ICreateFunctions<T> : IDisposable
+    public interface ICreateFunctions<T>
             where T : class
     {
         T Add(T entity);

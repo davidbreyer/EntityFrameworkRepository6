@@ -1,5 +1,5 @@
-﻿using PersistentLayerAuditable.Contexts;
-using PersistentLayerAuditable.Entities;
+﻿using PersistentLayer.Auditable.Contexts;
+using PersistentLayer.Auditable.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersistentLayerAuditable.Initializers
+namespace PersistentLayer.Auditable.Initializers
 {
     public class MyDbInitializer : DropCreateDatabaseIfModelChanges<YourCustomDataContext>
     {

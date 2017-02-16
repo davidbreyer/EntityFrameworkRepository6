@@ -68,9 +68,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntityFrameworkRepository6\EntityFrameworkRepository6.csproj">
+    <ProjectReference Include="..\EntityFrameworkRepository6\EntityFramework.Repository6.csproj">
       <Project>{0db0f16e-6aed-4677-9954-c9f1dd69a020}</Project>
-      <Name>EntityFrameworkRepository6</Name>
+      <Name>EntityFramework.Repository6</Name>
     </ProjectReference>
     <ProjectReference Include="..\PersistentLayer\PersistentLayer.csproj">
       <Project>{0e1bfbea-3c3b-4063-b301-543d07f2de5d}</Project>

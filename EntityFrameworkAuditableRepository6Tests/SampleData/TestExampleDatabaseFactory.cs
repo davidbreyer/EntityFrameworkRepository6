@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Effort.Extra;
-using PersistentLayerAuditable.Entities;
-using PersistentLayerAuditable;
-using PersistentLayerAuditable.Contexts;
-using EntityFrameworkAuditableRepository6.Base;
-using EntityFrameworkRepository6.Base;
+using PersistentLayer.Auditable.Entities;
+using PersistentLayer.Auditable;
+using PersistentLayer.Auditable.Contexts;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkAuditableRepository6Tests
+namespace EntityFramework.Auditable.Repository6.Tests
 {
     public class TestExampleDatabaseFactory : IDatabaseFactory<YourCustomDataContext>
     {

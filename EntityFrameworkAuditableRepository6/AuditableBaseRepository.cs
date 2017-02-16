@@ -1,12 +1,13 @@
 ﻿using EntityFramework.Auditing;
-using EntityFramework.SharedRepository;
+using EntityFramework.Repository6;
+using EntityFramework.Repository6.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace EntityFrameworkAuditableRepository6
+namespace EntityFramework.Auditable.Repository6
 {
     public abstract class AuditableBaseRepository<C, T> :
-        EntityFrameworkRepository6.Base.BaseRepository<C, T>
+        BaseRepository<C, T>
         , IBaseRepository<C, T>
         , IDisposable
         , IAuditSaveFunctions<T>

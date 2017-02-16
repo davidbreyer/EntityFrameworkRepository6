@@ -2,15 +2,14 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Microsoft.Practices.Unity;
-using PersistentLayerAuditable.Repositories;
+using PersistentLayer.Auditable.Repositories;
 using System.Linq;
-using PersistentLayerAuditable.Entities;
+using PersistentLayer.Auditable.Entities;
 using System.Data.Entity.Infrastructure;
-using EntityFrameworkAuditableRepository6.Base;
 using EntityFramework.Auditing;
-using EntityFrameworkRepository6.Base;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkAuditableRepository6Tests
+namespace EntityFramework.Auditable.Repository6.Tests
 {
     [TestClass]
     public class RepositoryCreateTests

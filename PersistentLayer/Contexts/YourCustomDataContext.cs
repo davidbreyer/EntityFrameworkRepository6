@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Data.Common;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using PersistentLayer.Initializers;
-using EntityFrameworkRepository6.Base;
+using EntityFramework.Repository6;
 
 namespace PersistentLayer.Contexts
 {

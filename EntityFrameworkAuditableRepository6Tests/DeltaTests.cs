@@ -4,14 +4,12 @@ using System.Diagnostics;
 using Microsoft.Practices.Unity;
 using System.Linq;
 using System.Data.Entity.Infrastructure;
-using PersistentLayerAuditable.Repositories;
-using EntityFrameworkAuditableRepository6.Base;
-using EntityFrameworkAuditableRepository6Tests;
-using PersistentLayerAuditable.Entities;
-using EntityFramework.SharedRepository;
-using EntityFrameworkRepository6.Base;
+using PersistentLayer.Auditable.Repositories;
+using EntityFramework.Auditable.Repository6.Tests;
+using PersistentLayer.Auditable.Entities;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkRepository6Tests
+namespace EntityFramework.Repository6.Tests
 {
     [TestClass]
     public class DeltaTests
