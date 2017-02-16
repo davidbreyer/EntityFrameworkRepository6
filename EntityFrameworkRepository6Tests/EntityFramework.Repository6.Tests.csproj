@@ -91,6 +91,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="RepositoryDeleteTests.cs" />
     <Compile Include="SampleData\TestDbInitializer.cs" />
     <Compile Include="SampleData\TestExampleDatabaseFactory.cs" />
     <Compile Include="RepositoryUpdateTests.cs" />

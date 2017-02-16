@@ -87,5 +87,26 @@ namespace EntityFramework.Repository6.Tests
             var delta1 = new Delta<SimpleDataEntity>();
             delta1.SetValue("NameNotRight", "Right data type");
         }
+
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        public void DeltaTest2Audit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+            var newItem = new SimpleDataEntity { Name = "Delta Test" };
+            var actual = repository.Add(newItem);
+            var result = repository.Save();
+
+            var delta2 = new Delta<SimpleDataEntity>();
+            delta2.SetValue("Name", "Delta Change Test 2");
+
+            repository.Update(delta2, e => e.Id == newItem.Id);
+
+            repository.Save();
+
+            var updatedValue = repository.Find(actual.Id);
+            Assert.AreEqual("Delta Change Test 2", updatedValue.Name);
+        }
     }
 }
