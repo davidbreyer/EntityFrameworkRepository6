@@ -129,7 +129,7 @@ namespace EntityFramework.Auditable.Repository6.Tests
 
         [TestCategory("AuditRepository")]
         [TestMethod]
-        [ExpectedException(typeof(System.Exception))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void UpdateByTestMethodIncorrectIdAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();

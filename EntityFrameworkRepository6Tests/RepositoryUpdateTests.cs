@@ -99,7 +99,7 @@ namespace EntityFramework.Repository6.Tests
 
         [TestCategory("StandardRepository")]
         [TestMethod]
-        [ExpectedException(typeof(System.Exception))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void UpdateByTestMethodIncorrectId()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();

@@ -108,5 +108,71 @@ namespace EntityFramework.Repository6.Tests
 
             repository.Dispose();
         }
+
+        [TestCategory("StandardRepository")]
+        [TestMethod]
+        public void FindByReadOnlyTestAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            var actual = repository.FindByReadOnly(x => x.Id == 1).SingleOrDefault();
+            Assert.AreEqual("Test 1", actual.Name);
+
+            repository.Dispose();
+        }
+
+        [TestCategory("StandardRepository")]
+        [TestMethod]
+        public void ExistsTestAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            var actual = repository.Exists(x => x.Id == 1);
+            Assert.IsTrue(actual);
+
+            repository.Dispose();
+        }
+
+        [TestCategory("StandardRepository")]
+        [TestMethod]
+        public async void FindAndReloadAsyncTestAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            //Load the entity
+            var actualEntity = await repository.FindAsync(2);
+            Assert.AreEqual("Test 2", actualEntity.Name);
+
+            //Alter the entity
+            actualEntity.Name = "Test 10";
+            Assert.AreEqual("Test 10", actualEntity.Name);
+
+            //Reload the entity from the database, resetting the data
+            await repository.ReloadAsync(actualEntity);
+
+            Assert.AreEqual("Test 2", actualEntity.Name);
+            repository.Dispose();
+        }
+
+        [TestCategory("StandardRepository")]
+        [TestMethod]
+        public void FindAndReloadTestAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            //Load the entity
+            var actualEntity = repository.Find(2);
+            Assert.AreEqual("Test 2", actualEntity.Name);
+
+            //Alter the entity
+            actualEntity.Name = "Test 10";
+            Assert.AreEqual("Test 10", actualEntity.Name);
+
+            //Reload the entity from the database, resetting the data
+            repository.Reload(actualEntity);
+
+            Assert.AreEqual("Test 2", actualEntity.Name);
+            repository.Dispose();
+        }
     }
 }

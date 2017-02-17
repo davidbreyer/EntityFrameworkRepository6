@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="DeltaTests.cs" />
     <Compile Include="RepositoryCreateTests.cs" />
+    <Compile Include="RepositoryDeleteTests.cs" />
     <Compile Include="RepositoryReadTests.cs" />
     <Compile Include="RepositoryUpdateTests.cs" />
     <Compile Include="SampleData\TestDbInitializer.cs" />

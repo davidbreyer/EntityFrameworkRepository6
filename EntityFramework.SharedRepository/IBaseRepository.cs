@@ -21,6 +21,6 @@ namespace EntityFramework.Repository6.Interfaces
         Task<int> CountAsync();
         bool Exists(Expression<Func<T, bool>> predicate);
         void Reload(T entity);
-        void ReloadAsync(T entity);
+        Task ReloadAsync(T entity);
     }
 }

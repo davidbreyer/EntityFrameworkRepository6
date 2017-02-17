@@ -108,5 +108,37 @@ namespace EntityFramework.Repository6.Tests
             var updatedValue = repository.Find(actual.Id);
             Assert.AreEqual("Delta Change Test 2", updatedValue.Name);
         }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void DeltaTestFailAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+            var newItem = new SimpleDataEntity { Name = "Delta Test" };
+            var actual = repository.Add(newItem);
+            var result = repository.Save();
+
+            var delta1 = new Delta<SimpleDataEntity>();
+            delta1.SetValue("Name", "Delta Change Test");
+
+            repository.Update(delta1, 55);
+        }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void DeltaTestFailWithPredicateAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+            var newItem = new SimpleDataEntity { Name = "Delta Test" };
+            var actual = repository.Add(newItem);
+            var result = repository.Save();
+
+            var delta1 = new Delta<SimpleDataEntity>();
+            delta1.SetValue("Name", "Delta Change Test");
+
+            repository.Update(delta1, x=>x.Id == 55);
+        }
     }
 }

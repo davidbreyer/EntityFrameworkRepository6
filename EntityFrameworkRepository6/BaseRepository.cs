@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityFramework.Repository6
 {
-    public abstract class BaseRepository<C, T> : 
+    public abstract class BaseRepository<C, T> :
             IBaseRepository<C, T>
             , IDisposable
         where T : class
@@ -88,7 +88,7 @@ namespace EntityFramework.Repository6
             Context.Entry<T>(entity).Reload();
         }
 
-        public async virtual void ReloadAsync(T entity)
+        public async virtual Task ReloadAsync(T entity)
         {
             await Context.Entry<T>(entity).ReloadAsync();
         }
@@ -124,18 +124,18 @@ namespace EntityFramework.Repository6
         {
             var entityToUpdate = Context.Set<T>().Find(id);
 
-            if (entityToUpdate == null) throw new Exception(string.Format("{0} is not a valid identity key for {1}.", id, typeof(T).Name));
+            if (entityToUpdate == null) throw CreateEntityNotFoundException<ArgumentOutOfRangeException>(id.ToString(), typeof(T).Name);
 
             Context.Entry(entityToUpdate).CurrentValues.SetValues(entity);
 
             MarkIgnoreFields(entityToUpdate);
         }
-        
+
         public virtual void Update(T entity, Expression<Func<T, bool>> predicate)
         {
             var entityToUpdate = Context.Set<T>().Where(predicate).SingleOrDefault();
 
-            if (entityToUpdate == null) throw new Exception(string.Format("{0} is not a valid identity key for {1}.", predicate.ToString(), typeof(T).Name));
+            if (entityToUpdate == null) throw CreateEntityNotFoundException<ArgumentOutOfRangeException>(predicate.ToString(), typeof(T).Name);
 
             Context.Entry(entityToUpdate).CurrentValues.SetValues(entity);
 
@@ -146,7 +146,7 @@ namespace EntityFramework.Repository6
         {
             var entityToUpdate = Context.Set<T>().Find(ids);
 
-            if (entityToUpdate == null) throw new Exception(string.Format("{0} is not a valid identity keys for {1}.", ids.ToString(), typeof(T).Name));
+            if (entityToUpdate == null) throw CreateEntityNotFoundException<ArgumentOutOfRangeException>(ids.ToString(), typeof(T).Name);
 
             foreach (string field in delta.UpdatedFields())
             {
@@ -163,7 +163,7 @@ namespace EntityFramework.Repository6
         {
             var entityToUpdate = Context.Set<T>().Where(predicate).SingleOrDefault();
 
-            if (entityToUpdate == null) throw new Exception(string.Format("{0} is not a valid identity key for {1}.", predicate.ToString(), typeof(T).Name));
+            if (entityToUpdate == null) throw CreateEntityNotFoundException<ArgumentOutOfRangeException>(predicate.ToString(), typeof(T).Name);
 
             foreach (string field in delta.UpdatedFields())
             {
@@ -174,6 +174,11 @@ namespace EntityFramework.Repository6
             }
 
             MarkIgnoreFields(entityToUpdate);
+        }
+
+        protected virtual E CreateEntityNotFoundException<E>(string entityId, string entityType)
+        {
+            return (E)Activator.CreateInstance(typeof(E), string.Format("{0} is not a valid identity key(s) for {1}.", entityId, entityType));
         }
 
         protected virtual void MarkIgnoreFields(T entityToUpdate)
