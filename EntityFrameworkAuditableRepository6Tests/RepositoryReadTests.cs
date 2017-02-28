@@ -139,12 +139,12 @@ namespace EntityFramework.Auditable.Repository6.Tests
 
         [TestCategory("AuditRepository")]
         [TestMethod]
-        public async void FindAndReloadAsyncTestAudit()
+        public void FindAndReloadAsyncTestAudit()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
 
             //Load the entity
-            var actualEntity = await repository.FindAsync(2);
+            var actualEntity = repository.FindAsync(2).Result;
             Assert.AreEqual("Test 2", actualEntity.Name);
 
             //Alter the entity
@@ -152,7 +152,7 @@ namespace EntityFramework.Auditable.Repository6.Tests
             Assert.AreEqual("Test 10", actualEntity.Name);
 
             //Reload the entity from the database, resetting the data
-            await repository.ReloadAsync(actualEntity);
+            repository.ReloadAsync(actualEntity).Wait();
 
             Assert.AreEqual("Test 2", actualEntity.Name);
             repository.Dispose();
