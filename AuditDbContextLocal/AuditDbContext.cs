@@ -225,7 +225,7 @@ namespace EntityFramework.Auditing
         /// </summary>
         /// <param name="user">User name for auditing.</param>
         /// <returns>The number of objects written to the underlying database.</returns>
-        public int SaveChanges(string user)
+        public virtual int SaveChanges(string user)
         {
             if (AuditEnabled)
             {
@@ -254,7 +254,7 @@ namespace EntityFramework.Auditing
             }
         }
 
-        public async Task<int> SaveChangesAsync(string user)
+        public virtual async Task<int> SaveChangesAsync(string user)
         {
             if (AuditEnabled)
             {
