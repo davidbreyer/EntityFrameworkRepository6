@@ -15,24 +15,15 @@ namespace EntityFramework.Repository6
         public Action<string> Logging { get; set; }
 
         protected string dbConnectionString { get; set; }
-        protected IDatabaseInitializer<C> InitializerStrategy { get; set; }
 
         public DatabaseFactory(string connectionString)
         {
             dbConnectionString = connectionString;
-            InitializerStrategy = null;
         }
-
-        public DatabaseFactory(string connectionString, IDatabaseInitializer<C> initializerStrategy)
-        {
-            dbConnectionString = connectionString;
-            InitializerStrategy = initializerStrategy;
-        }
-
-
+        
         public virtual C GetNewDbContext()
         {
-            var newContext = (C)Activator.CreateInstance(typeof(C), dbConnectionString, InitializerStrategy);
+            var newContext = (C)Activator.CreateInstance(typeof(C), dbConnectionString);
 
             if (Logging != null) { newContext.Database.Log = Logging; }
             
