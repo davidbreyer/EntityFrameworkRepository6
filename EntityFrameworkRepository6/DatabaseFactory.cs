@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 
-namespace EntityFrameworkRepository6.Base
+namespace EntityFramework.Repository6
 {
     public interface IDatabaseFactory<C>
     {

@@ -8,9 +8,9 @@ using Effort.Extra;
 using PersistentLayer.Entities;
 using PersistentLayer;
 using PersistentLayer.Contexts;
-using EntityFrameworkRepository6.Base;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkRepository6Tests
+namespace EntityFramework.Repository6.Tests
 {
     public class TestExampleDatabaseFactory : IDatabaseFactory<YourCustomDataContext>
     {

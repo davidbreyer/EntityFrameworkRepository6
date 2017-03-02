@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFrameworkRepository6Tests
+namespace EntityFramework.Repository6.Tests
 {
     public class TestDbInitializer : DropCreateDatabaseAlways<YourCustomDataContext>
     {

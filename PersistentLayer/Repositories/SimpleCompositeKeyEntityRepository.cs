@@ -1,4 +1,5 @@
-﻿using EntityFrameworkRepository6.Base;
+﻿using EntityFramework.Repository6;
+using EntityFramework.Repository6.Interfaces;
 using PersistentLayer.Contexts;
 using PersistentLayer.Entities;
 using System;
@@ -16,9 +17,9 @@ namespace PersistentLayer.Repositories
 
     public class SimpleCompositeKeyEntityRepository : BaseRepository<YourCustomDataContext, SimpleCompositeKeyEntity>, ISimpleCompositeKeyEntityRepository
     {
-        public SimpleCompositeKeyEntityRepository(IDatabaseFactory<YourCustomDataContext> dbFactory)
+        public SimpleCompositeKeyEntityRepository(IDatabaseFactory<YourCustomDataContext> dbFactory) : base(dbFactory.GetNewDbContext())
         {
-            Context = dbFactory.GetNewDbContext();
+            
         }
     }
 }

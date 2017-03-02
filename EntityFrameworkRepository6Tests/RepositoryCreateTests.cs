@@ -3,12 +3,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Microsoft.Practices.Unity;
 using PersistentLayer.Repositories;
-using EntityFrameworkRepository6.Base;
 using System.Linq;
 using PersistentLayer.Entities;
 using System.Data.Entity.Infrastructure;
+using EntityFramework.Repository6;
+using System.Collections.Generic;
 
-namespace EntityFrameworkRepository6Tests
+namespace EntityFramework.Repository6.Tests
 {
     [TestClass]
     public class RepositoryCreateTests
@@ -89,6 +90,33 @@ namespace EntityFrameworkRepository6Tests
             var actual2 = repository.Find(actual.Id);
 
             Assert.AreEqual("My Test 300", actual2.Name);
+
+            repository.Dispose();
+        }
+
+        [TestCategory("StandardRepository")]
+        [TestMethod]
+        public void InsertMultipleTest()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            var actual1 = repository.Count();
+
+            var newItem1 = new SimpleDataEntity { Name = "Multiple Item 1" };
+            var newItem2 = new SimpleDataEntity { Name = "Multiple Item 2" };
+            var newItem3 = new SimpleDataEntity { Name = "Multiple Item 3" };
+            var actual = repository.Add(new List<SimpleDataEntity>
+            {
+                newItem1
+                , newItem2
+                , newItem3
+            });
+            var result = repository.Save();
+
+            var actual2 = repository.Count();
+
+            Assert.AreEqual(7, actual1);
+            Assert.AreEqual(10, actual2);
 
             repository.Dispose();
         }

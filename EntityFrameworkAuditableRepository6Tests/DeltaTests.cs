@@ -4,12 +4,12 @@ using System.Diagnostics;
 using Microsoft.Practices.Unity;
 using System.Linq;
 using System.Data.Entity.Infrastructure;
-using PersistentLayerAuditable.Repositories;
-using EntityFrameworkAuditableRepository6.Base;
-using EntityFrameworkAuditableRepository6Tests;
-using PersistentLayerAuditable.Entities;
+using PersistentLayer.Auditable.Repositories;
+using EntityFramework.Auditable.Repository6.Tests;
+using PersistentLayer.Auditable.Entities;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkRepository6Tests
+namespace EntityFramework.Repository6.Tests
 {
     [TestClass]
     public class DeltaTests
@@ -86,6 +86,59 @@ namespace EntityFrameworkRepository6Tests
 
             var delta1 = new Delta<SimpleDataEntity>();
             delta1.SetValue("NameNotRight", "Right data type");
+        }
+
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        public void DeltaTest2Audit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+            var newItem = new SimpleDataEntity { Name = "Delta Test" };
+            var actual = repository.Add(newItem);
+            var result = repository.Save();
+
+            var delta2 = new Delta<SimpleDataEntity>();
+            delta2.SetValue("Name", "Delta Change Test 2");
+
+            repository.Update(delta2, e => e.Id == newItem.Id);
+
+            repository.Save();
+
+            var updatedValue = repository.Find(actual.Id);
+            Assert.AreEqual("Delta Change Test 2", updatedValue.Name);
+        }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void DeltaTestFailAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+            var newItem = new SimpleDataEntity { Name = "Delta Test" };
+            var actual = repository.Add(newItem);
+            var result = repository.Save();
+
+            var delta1 = new Delta<SimpleDataEntity>();
+            delta1.SetValue("Name", "Delta Change Test");
+
+            repository.Update(delta1, 55);
+        }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void DeltaTestFailWithPredicateAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+            var newItem = new SimpleDataEntity { Name = "Delta Test" };
+            var actual = repository.Add(newItem);
+            var result = repository.Save();
+
+            var delta1 = new Delta<SimpleDataEntity>();
+            delta1.SetValue("Name", "Delta Change Test");
+
+            repository.Update(delta1, x=>x.Id == 55);
         }
     }
 }

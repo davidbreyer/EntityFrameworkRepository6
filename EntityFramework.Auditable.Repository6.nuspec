@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>EntityFrameworkAuditableRepository6</id>
+    <id>EntityFramework.Auditable.Repository6</id>
     <version>1.0.1</version>
     <authors>David Breyer</authors>
     <owners>David Breyer</owners>
@@ -16,6 +16,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="EntityFrameworkAuditableRepository6\bin\Release\EntityFrameworkAuditableRepository6.dll" target="lib\net45" />
+    <file src="EntityFrameworkAuditableRepository6\bin\Release\EntityFramework.Auditable.Repository6.dll" target="lib\net45" />
   </files>
 </package>

@@ -89,6 +89,17 @@ namespace EntityFramework.Auditing
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="contextOwnsConnection"></param>
+        public AuditDbContext(DbConnection connection, bool contextOwnsConnection)
+            : base(connection, contextOwnsConnection)
+        {
+
+        }
+
         #endregion
 
         /// <summary>
@@ -150,7 +161,7 @@ namespace EntityFramework.Auditing
                     throw new ArgumentException("Entity does implement IAuditEntity", "auditEntityType");
                 }
 
-                // Extract the list of propeties to audit.
+                // Extract the list of properties to audit.
                 var properties = auditEntityType.GetProperties();
                 var entityProperties = auditableEntityType.GetProperties().ToDictionary(x => x.Name);
                 foreach (var property in properties)
@@ -210,66 +221,16 @@ namespace EntityFramework.Auditing
 
         /// <summary>
         /// Saves all changes made in this context to the underlying database
-        /// using the user paramater passed for auditing.
+        /// using the user parameter passed for auditing.
         /// </summary>
         /// <param name="user">User name for auditing.</param>
         /// <returns>The number of objects written to the underlying database.</returns>
-        public int SaveChanges(string user)
+        public virtual int SaveChanges(string user)
         {
             if (AuditEnabled)
             {
-                // Track all audit entities created in this transaction, will be removed from context on exception.
-                List<IAuditEntity> audits = new List<IAuditEntity>();
-
-                // Use the same datetime for all updates in this transaction, retrieved from server when first used.
-                DateTimeOffset? updateDateTime = null;
-
-                // Process any auditable objects.
-                foreach (DbEntityEntry<IAuditableEntity> auditable in this.ChangeTracker.Entries<IAuditableEntity>())
-                {
-                    if (auditable.State == EntityState.Added
-                        || auditable.State == EntityState.Modified
-                        || auditable.State == EntityState.Deleted)
-                    {
-                        // Need datetime for the audits.
-                        if (updateDateTime.HasValue == false)
-                        {
-                            try
-                            {
-                                updateDateTime = this.Database.SqlQuery<DateTimeOffset>("select SYSDATETIMEOFFSET()", new object[] { }).First();
-                            }
-                            catch (Exception)
-                            {
-                                updateDateTime = DateTimeOffset.Now;
-                            }
-                        }
-
-                        // Create an audit entity.
-                        if (auditable.State == EntityState.Modified
-                            || auditable.State == EntityState.Deleted)
-                        {
-                            // TODO: Find a better way of doing this proxy check.
-                            Type entityType = auditable.Entity.GetType();
-                            if (entityType.Namespace == "System.Data.Entity.DynamicProxies")
-                            {
-                                entityType = entityType.BaseType;
-                            }
-
-                            if (auditTypes.ContainsKey(entityType) && auditTypes[entityType].AuditEntityType != null)
-                            {
-                                audits.Add(this.AuditEntity(auditable, auditTypes[entityType], updateDateTime.Value, user));
-                            }
-                        }
-
-                        // Update the auditable entity.
-                        if (auditable.State != EntityState.Deleted)
-                        {
-                            auditable.Entity.Updated = updateDateTime.Value;
-                            auditable.Entity.UpdateUser = user;
-                        }
-                    }
-                }
-
+                var audits = CreateAuditRecords(user);
+               
                 // Perform the updates.
                 try
                 {
@@ -293,60 +254,12 @@ namespace EntityFramework.Auditing
             }
         }
 
-        public async Task<int> SaveChangesAsync(string user)
+        public virtual async Task<int> SaveChangesAsync(string user)
         {
             if (AuditEnabled)
             {
-                // Track all audit entities created in this transaction, will be removed from context on exception.
-                List<IAuditEntity> audits = new List<IAuditEntity>();
-
-                // Use the same datetime for all updates in this transaction, retrieved from server when first used.
-                DateTimeOffset? updateDateTime = null;
-
-                // Process any auditable objects.
-                foreach (DbEntityEntry<IAuditableEntity> auditable in this.ChangeTracker.Entries<IAuditableEntity>())
-                {
-                    if (auditable.State == EntityState.Added
-                        || auditable.State == EntityState.Modified
-                        || auditable.State == EntityState.Deleted)
-                    {
-                        // Need datetime for the audits.
-                        if (updateDateTime.HasValue == false)
-                        {
-                            try { 
-                                updateDateTime = this.Database.SqlQuery<DateTimeOffset>("select SYSDATETIMEOFFSET()", new object[] { }).First();
-                            } catch (Exception)
-                            {
-                                updateDateTime = DateTimeOffset.Now;
-                            }
-                        }
-
-                        // Create an audit entity.
-                        if (auditable.State == EntityState.Modified
-                            || auditable.State == EntityState.Deleted)
-                        {
-                            // TODO: Find a better way of doing this proxy check.
-                            Type entityType = auditable.Entity.GetType();
-                            if (entityType.Namespace == "System.Data.Entity.DynamicProxies")
-                            {
-                                entityType = entityType.BaseType;
-                            }
-
-                            if (auditTypes.ContainsKey(entityType) && auditTypes[entityType].AuditEntityType != null)
-                            {
-                                audits.Add(this.AuditEntity(auditable, auditTypes[entityType], updateDateTime.Value, user));
-                            }
-                        }
-
-                        // Update the auditable entity.
-                        if (auditable.State != EntityState.Deleted)
-                        {
-                            auditable.Entity.Updated = updateDateTime.Value;
-                            auditable.Entity.UpdateUser = user;
-                        }
-                    }
-                }
-
+                var audits = CreateAuditRecords(user);
+                
                 // Perform the updates.
                 try
                 {
@@ -368,6 +281,63 @@ namespace EntityFramework.Auditing
             {
                 return await base.SaveChangesAsync();
             }
+        }
+
+        private List<IAuditEntity> CreateAuditRecords(string user)
+        {
+            // Track all audit entities created in this transaction, will be removed from context on exception.
+            List<IAuditEntity> audits = new List<IAuditEntity>();
+
+            // Use the same datetime for all updates in this transaction, retrieved from server when first used.
+            DateTimeOffset? updateDateTime = null;
+
+            // Process any auditable objects.
+            foreach (DbEntityEntry<IAuditableEntity> auditable in this.ChangeTracker.Entries<IAuditableEntity>())
+            {
+                if (auditable.State == EntityState.Added
+                    || auditable.State == EntityState.Modified
+                    || auditable.State == EntityState.Deleted)
+                {
+                    // Need datetime for the audits.
+                    if (updateDateTime.HasValue == false)
+                    {
+                        try
+                        {
+                            updateDateTime = this.Database.SqlQuery<DateTimeOffset>("select SYSDATETIMEOFFSET()", new object[] { }).First();
+                        }
+                        catch (Exception)
+                        {
+                            updateDateTime = DateTimeOffset.Now;
+                        }
+                    }
+
+                    // Create an audit entity.
+                    if (auditable.State == EntityState.Modified
+                        || auditable.State == EntityState.Deleted)
+                    {
+                        // TODO: Find a better way of doing this proxy check.
+                        Type entityType = auditable.Entity.GetType();
+                        if (entityType.Namespace == "System.Data.Entity.DynamicProxies")
+                        {
+                            entityType = entityType.BaseType;
+                        }
+
+                        if (auditTypes.ContainsKey(entityType) && auditTypes[entityType].AuditEntityType != null)
+                        {
+                            audits.Add(this.AuditEntity(auditable, auditTypes[entityType], updateDateTime.Value, user));
+                        }
+                    }
+
+                    // Update the auditable entity.
+                    if (auditable.State != EntityState.Deleted)
+                    {
+                        auditable.Entity.Updated = updateDateTime.Value;
+                        auditable.Entity.UpdateUser = user;
+                    }
+                }
+            }
+
+            return audits;
         }
 
         private IAuditEntity AuditEntity(DbEntityEntry entityEntry, AuditTypeInfo auditTypeInfo, DateTimeOffset auditDateTime, string user)

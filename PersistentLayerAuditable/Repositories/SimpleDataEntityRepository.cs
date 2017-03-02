@@ -1,24 +1,27 @@
-﻿using EntityFrameworkAuditableRepository6.Base;
-using PersistentLayerAuditable.Contexts;
-using PersistentLayerAuditable.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using PersistentLayer.Auditable.Contexts;
+using PersistentLayer.Auditable.Entities;
+using EntityFramework.Repository6.Interfaces;
+using EntityFramework.Auditable.Repository6;
+using EntityFramework.Repository6;
 
-namespace PersistentLayerAuditable.Repositories
+namespace PersistentLayer.Auditable.Repositories
 {
-    public interface ISimpleDataEntityRepository : IBaseRepository<YourCustomDataContext, SimpleDataEntity>
+    public interface ISimpleDataEntityRepository : IBaseRepository<YourCustomDataContext, SimpleDataEntity>, IAuditSaveFunctions<SimpleDataEntity>
     {
+        YourCustomDataContext GetExistingContext();
     }
 
-    public class SimpleDataEntityRepository : BaseRepository<YourCustomDataContext, SimpleDataEntity>, ISimpleDataEntityRepository
+    public class SimpleDataEntityRepository : AuditableBaseRepository<YourCustomDataContext, SimpleDataEntity>, ISimpleDataEntityRepository
     {
-        public SimpleDataEntityRepository(IDatabaseFactory<YourCustomDataContext> dbFactory)
+        public SimpleDataEntityRepository(IDatabaseFactory<YourCustomDataContext> dbFactory) : base( dbFactory.GetNewDbContext() )
         {
-            Context = dbFactory.GetNewDbContext();
+            
+        }
+
+        public YourCustomDataContext GetExistingContext()
+        {
+            return Context;
         }
     }
 }

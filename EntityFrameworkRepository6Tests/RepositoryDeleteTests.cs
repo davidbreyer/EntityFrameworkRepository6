@@ -3,16 +3,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersistentLayer.Entities;
 using PersistentLayer.Repositories;
 using System;
-using System.Data.Entity.Infrastructure;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using EntityFramework.Repository6.Interfaces;
-using EntityFramework.Repository6;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace EntityFramework.Repository6.Tests
 {
     [TestClass]
-    public class RepositoryUpdateTests
+    public class RepositoryDeleteTests
     {
         UnityContainer LocalIoCContainer { get; set; }
 
@@ -26,16 +26,14 @@ namespace EntityFramework.Repository6.Tests
             LocalIoCContainer.RegisterType<ISimpleCompositeKeyEntityRepository, SimpleCompositeKeyEntityRepository>(new HierarchicalLifetimeManager());
 
             //Use a physical database file
-            //Direct connection string
             //var connectionString = @"Data Source = (LocalDb)\MSSQLLocalDB; Database = TestDatabase; Integrated Security = True; Pooling = false; MultipleActiveResultSets = true";
             //or
-            //Computed connection
             //var connectionString = @"TestDatabase";
             //LocalIoCContainer.RegisterType(typeof(IDatabaseFactory<>), typeof(DatabaseFactory<>)
             //    , new HierarchicalLifetimeManager()
             //    , new InjectionConstructor(connectionString)
             //    , new InjectionProperty("Logging", logSetup));
-            
+
             //Use an nmemory database
             LocalIoCContainer.RegisterType(typeof(IDatabaseFactory<>), typeof(TestExampleDatabaseFactory)
                 , new HierarchicalLifetimeManager()
@@ -44,69 +42,46 @@ namespace EntityFramework.Repository6.Tests
 
         [TestCategory("StandardRepository")]
         [TestMethod]
-        public void UpdateTestMethod()
+        public void DeleteTestMethod()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
-            
-            var itemToUpdate = repository.Find(2);
-            itemToUpdate.Name = "Updated Name";
-            repository.Update(itemToUpdate, itemToUpdate.Id);
+
+            var actual1 = repository.Count();
+
+            var itemToDelete = repository.Find(1);
+
+            repository.Delete(itemToDelete);
+
             repository.Save();
 
-            var actual = repository.Find(2);
-            
-            Assert.AreEqual("Updated Name", actual.Name);
+            var actual2 = repository.Count();
+
+            Assert.AreEqual(7, actual1);
+            Assert.AreEqual(6, actual2);
 
             repository.Dispose();
         }
 
         [TestCategory("StandardRepository")]
         [TestMethod]
-        public void UpdateTestMethodWithIgnoreFieldFeature()
+        public void DeleteMultipleTestMethod()
         {
             var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
-            repository.AddUpdateIgnoreField("Name");
 
-            var itemToUpdate = repository.Find(2);
-            itemToUpdate.Name = "Updated Name";
-            repository.Update(itemToUpdate, itemToUpdate.Id);
+            var actual1 = repository.Count();
+
+            var itemsToDelete = repository.FindBy(x => x.Id == 1 || x.Id == 2);
+
+            repository.Delete(itemsToDelete);
+
             repository.Save();
 
-            var actual = repository.Find(2);
+            var actual2 = repository.Count();
 
-            Assert.AreNotEqual("Updated Name", actual.Name);
-
-            repository.Dispose();
-        }
-
-        [TestCategory("StandardRepository")]
-        [TestMethod]
-        public void UpdateByTestMethod()
-        {
-            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
-
-            var itemToUpdate = repository.Find(2);
-            itemToUpdate.Name = "Updated Name 2";
-            repository.Update(itemToUpdate, x => x.Id == 2);
-            repository.Save();
-
-            var actual = repository.Find(2);
-
-            Assert.AreEqual("Updated Name 2", actual.Name);
+            Assert.AreEqual(7, actual1);
+            Assert.AreEqual(5, actual2);
 
             repository.Dispose();
-        }
-
-        [TestCategory("StandardRepository")]
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void UpdateByTestMethodIncorrectId()
-        {
-            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
-
-            var itemToUpdate = repository.Find(2);
-            itemToUpdate.Name = "Updated Name 2";
-            repository.Update(itemToUpdate, x => x.Id == 55);
         }
     }
 }

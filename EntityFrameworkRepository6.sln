@@ -3,15 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkRepository6", "EntityFrameworkRepository6\EntityFrameworkRepository6.csproj", "{0DB0F16E-6AED-4677-9954-C9F1DD69A020}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Repository6", "EntityFrameworkRepository6\EntityFramework.Repository6.csproj", "{0DB0F16E-6AED-4677-9954-C9F1DD69A020}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB5DA1ED-73CF-41FE-8E50-D21372107C3D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		AuditDBContext.nuspec = AuditDBContext.nuspec
 		badge_linecoverage.svg = badge_linecoverage.svg
-		EntityFrameworkAuditableRepository6.nuspec = EntityFrameworkAuditableRepository6.nuspec
-		EntityFrameworkRepository6.nuspec = EntityFrameworkRepository6.nuspec
+		EntityFramework.Auditable.Repository6.nuspec = EntityFramework.Auditable.Repository6.nuspec
+		EntityFramework.Repository6.nuspec = EntityFramework.Repository6.nuspec
+		NuGet.Config = NuGet.Config
 		nuget.exe = nuget.exe
 		README.md = README.md
 	EndProjectSection
@@ -20,17 +21,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseInitialization", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistentLayer", "PersistentLayer\PersistentLayer.csproj", "{0E1BFBEA-3C3B-4063-B301-543D07F2DE5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkRepository6Tests", "EntityFrameworkRepository6Tests\EntityFrameworkRepository6Tests.csproj", "{E2231BA0-E54C-402F-B076-A1010C577E42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Repository6.Tests", "EntityFrameworkRepository6Tests\EntityFramework.Repository6.Tests.csproj", "{E2231BA0-E54C-402F-B076-A1010C577E42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkAuditableRepository6", "EntityFrameworkAuditableRepository6\EntityFrameworkAuditableRepository6.csproj", "{56FCFB02-E7F9-4E74-8C7D-B412A41203CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Auditable.Repository6", "EntityFrameworkAuditableRepository6\EntityFramework.Auditable.Repository6.csproj", "{56FCFB02-E7F9-4E74-8C7D-B412A41203CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkAuditableRepository6Tests", "EntityFrameworkAuditableRepository6Tests\EntityFrameworkAuditableRepository6Tests.csproj", "{FBFA1FE8-C52D-43FC-8F2E-6767084621F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Auditable.Repository6.Tests", "EntityFrameworkAuditableRepository6Tests\EntityFramework.Auditable.Repository6.Tests.csproj", "{FBFA1FE8-C52D-43FC-8F2E-6767084621F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistentLayerAuditable", "PersistentLayerAuditable\PersistentLayerAuditable.csproj", "{76147A0C-3D03-4E4B-91E3-3DE5B86BC231}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistentLayer.Auditable", "PersistentLayerAuditable\PersistentLayer.Auditable.csproj", "{76147A0C-3D03-4E4B-91E3-3DE5B86BC231}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Auditing", "AuditDbContextLocal\EntityFramework.Auditing.csproj", "{EA0B93F9-4C12-47C3-B38D-C6D4B51AA4B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Auditing.Test", "AuditDbContextTests\EntityFramework.Auditing.Test.csproj", "{F85139D8-97FD-4DB6-8F95-31349D3D7674}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.SharedRepository", "EntityFramework.SharedRepository\EntityFramework.SharedRepository.csproj", "{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,6 +77,10 @@ Global
 		{F85139D8-97FD-4DB6-8F95-31349D3D7674}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F85139D8-97FD-4DB6-8F95-31349D3D7674}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F85139D8-97FD-4DB6-8F95-31349D3D7674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D38CDB7-CCED-47DB-9A21-DD94CED623DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

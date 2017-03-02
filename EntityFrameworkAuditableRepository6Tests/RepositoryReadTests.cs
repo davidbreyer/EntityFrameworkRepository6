@@ -2,13 +2,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Microsoft.Practices.Unity;
-using PersistentLayerAuditable.Repositories;
+using PersistentLayer.Auditable.Repositories;
 using System.Linq;
-using EntityFrameworkAuditableRepository6.Base;
 using EntityFramework.Auditing;
-using PersistentLayerAuditable.Entities;
+using PersistentLayer.Auditable.Entities;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkAuditableRepository6Tests
+namespace EntityFramework.Auditable.Repository6.Tests
 {
     [TestClass]
     public class RepositoryReadTests
@@ -110,6 +110,72 @@ namespace EntityFrameworkAuditableRepository6Tests
             var actual = repository.FindAsync(1, "Another Key");
             Assert.AreEqual("Another Key", actual.Result.Name);
 
+            repository.Dispose();
+        }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        public void FindByReadOnlyTestAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            var actual = repository.FindByReadOnly(x=>x.Id == 1).SingleOrDefault();
+            Assert.AreEqual("Test 1", actual.Name);
+
+            repository.Dispose();
+        }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        public void ExistsTestAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            var actual = repository.Exists(x => x.Id == 1);
+            Assert.IsTrue(actual);
+
+            repository.Dispose();
+        }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        public void FindAndReloadAsyncTestAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            //Load the entity
+            var actualEntity = repository.FindAsync(2).Result;
+            Assert.AreEqual("Test 2", actualEntity.Name);
+
+            //Alter the entity
+            actualEntity.Name = "Test 10";
+            Assert.AreEqual("Test 10", actualEntity.Name);
+
+            //Reload the entity from the database, resetting the data
+            repository.ReloadAsync(actualEntity).Wait();
+
+            Assert.AreEqual("Test 2", actualEntity.Name);
+            repository.Dispose();
+        }
+
+        [TestCategory("AuditRepository")]
+        [TestMethod]
+        public void FindAndReloadTestAudit()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+
+            //Load the entity
+            var actualEntity = repository.Find(2);
+            Assert.AreEqual("Test 2", actualEntity.Name);
+
+            //Alter the entity
+            actualEntity.Name = "Test 10";
+            Assert.AreEqual("Test 10", actualEntity.Name);
+
+            //Reload the entity from the database, resetting the data
+            repository.Reload(actualEntity);
+
+            Assert.AreEqual("Test 2", actualEntity.Name);
             repository.Dispose();
         }
     }

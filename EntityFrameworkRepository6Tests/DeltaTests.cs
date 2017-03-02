@@ -3,12 +3,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Microsoft.Practices.Unity;
 using PersistentLayer.Repositories;
-using EntityFrameworkRepository6.Base;
 using System.Linq;
 using PersistentLayer.Entities;
 using System.Data.Entity.Infrastructure;
+using EntityFramework.Repository6.Interfaces;
+using EntityFramework.Repository6;
 
-namespace EntityFrameworkRepository6Tests
+namespace EntityFramework.Repository6.Tests
 {
     [TestClass]
     public class DeltaTests
@@ -85,6 +86,26 @@ namespace EntityFrameworkRepository6Tests
 
             var delta1 = new Delta<SimpleDataEntity>();
             delta1.SetValue("NameNotRight", "Right data type");
+        }
+
+        [TestCategory("StandardRepository")]
+        [TestMethod]
+        public void DeltaTestWithPredicate()
+        {
+            var repository = LocalIoCContainer.Resolve<ISimpleDataEntityRepository>();
+            var newItem = new SimpleDataEntity { Name = "Delta Test" };
+            var actual = repository.Add(newItem);
+            var result = repository.Save();
+
+            var delta1 = new Delta<SimpleDataEntity>();
+            delta1.SetValue("Name", "Delta Change Test");
+
+            repository.Update(delta1, x=>x.Id == newItem.Id);
+
+            repository.Save();
+
+            var updatedValue = repository.Find(actual.Id);
+            Assert.AreEqual("Delta Change Test", updatedValue.Name);
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace EntityFrameworkRepository6.Base
+namespace EntityFramework.Repository6
 {
     public class Delta<T> where T : class
     {
@@ -24,7 +25,7 @@ namespace EntityFrameworkRepository6.Base
         public void SetValue(string fieldName, object data)
         {
             var prop1 = typeof(T).GetProperty(fieldName);
-            if(prop1 == null)
+            if (prop1 == null)
             {
                 throw new ArgumentException($"{fieldName} was not a property found on the object.");
             }
@@ -32,7 +33,8 @@ namespace EntityFrameworkRepository6.Base
             {
                 prop1.SetValue(Internal, data);
                 Fields.Add(fieldName);
-            }catch(ArgumentException ex)
+            }
+            catch (ArgumentException ex)
             {
                 throw ex;
             }

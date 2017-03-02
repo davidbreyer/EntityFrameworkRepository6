@@ -1,4 +1,4 @@
-﻿using PersistentLayerAuditable.Entities;
+﻿using PersistentLayer.Auditable.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,12 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Common;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using PersistentLayerAuditable.Initializers;
-using EntityFrameworkAuditableRepository6.Base;
+using PersistentLayer.Auditable.Initializers;
+using EntityFramework.Auditable.Repository6;
 
-namespace PersistentLayerAuditable.Contexts
+namespace PersistentLayer.Auditable.Contexts
 {
-    public class YourCustomDataContext : BaseContext<YourCustomDataContext>
+    public class YourCustomDataContext : AuditableBaseContext<YourCustomDataContext>
     {
         public DbSet<SimpleDataEntity> SimpleDataEntities { get; set; }
         public DbSet<SimpleCompositeKeyEntity> SimpleCompositeKeyEntities { get; set; }

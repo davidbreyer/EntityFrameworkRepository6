@@ -1,4 +1,4 @@
-﻿## EntityFrameworkRepository6
+﻿## EntityFramework.Repository6
 
 Entity Framework 6 Repository Pattern
 
