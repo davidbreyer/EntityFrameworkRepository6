@@ -10,3 +10,5 @@ TestResults
 *.suo
 *.nupkg
 .vs/config/applicationhost.config
+*.vssettings
+/Visual Studio 2017/settings

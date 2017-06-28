@@ -2,14 +2,17 @@
 <package >
   <metadata>
     <id>EntityFramework.Auditing</id>
-    <version>2.0.1</version>
+    <title>Entity Framework Auditing Context</title>
+    <version>2.0.2</version>
+    <summary>Updated version of the AuditDBContext created by Russell Wilkins. Updated for Entity Framework 6.</summary>
+    <projectUrl>https://github.com/davidbreyer/EntityFrameworkRepository6</projectUrl>
     <authors>David Breyer, Russell Wilkins</authors>
     <owners>David Breyer</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Entity Framework Auditing Context</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2016</copyright>
-    <tags></tags>
+    <tags>Entity Framework Auditing Context EntityFramework</tags>
     <dependencies>
       <dependency id="EntityFramework" version="6.1.3" />
     </dependencies>
