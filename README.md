@@ -4,6 +4,8 @@
 
 [![Build](https://yellinglizard.visualstudio.com/_apis/public/build/definitions/28d3c4e6-cc52-4c99-ba3b-7ae738d4e6b1/4/badge "Build")](https://ci.appveyor.com/project/davidbreyer/entityframeworkrepository6)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/47cd5513ffa847c48ef74c6db45a2cca)](https://www.codacy.com/app/davidbreyer/EntityFrameworkRepository6?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=davidbreyer/EntityFrameworkRepository6&amp;utm_campaign=Badge_Grade)
+
 ## Features
 
 * Auditable
