@@ -3,8 +3,8 @@
   <metadata>
     <id>EntityFrameworkAuditableRepository6</id>
     <title>Entity Framework Auditable Repository for EF 6</title>
-    <version>2.0.2</version>
-    <summary>A Repository for Entity Framework 6.1.3 built with EFFORT and NMemory testing in mind. Includes a Delta class for partial updates. Includes an Auditing library.</summary>
+    <version>2.0.3</version>
+    <summary>A Repository for Entity Framework 6.2.0 built with EFFORT and NMemory testing in mind. Includes a Delta class for partial updates. Includes an Auditing library.</summary>
     <projectUrl>https://github.com/davidbreyer/EntityFrameworkRepository6</projectUrl>
     <authors>David Breyer</authors>
     <owners>David Breyer</owners>
@@ -14,8 +14,8 @@
     <copyright>Copyright 2016</copyright>
     <tags>Entity Framework EntityFramework Repository Audit</tags>
     <dependencies>
-      <dependency id="EntityFramework" version="6.1.3" />
-	    <dependency id="EntityFramework.Auditing" version="2.0.2" />
+      <dependency id="EntityFramework" version="6.2.0" />
+	    <dependency id="EntityFramework.Auditing" version="2.0.3" />
     </dependencies>
   </metadata>
   <files>
