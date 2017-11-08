@@ -8,6 +8,9 @@ using PersistentLayer.Entities;
 using System.Data.Entity.Infrastructure;
 using EntityFramework.Repository6;
 using System.Collections.Generic;
+using Unity.Lifetime;
+using Unity.Injection;
+using Unity;
 
 namespace EntityFramework.Repository6.Tests
 {

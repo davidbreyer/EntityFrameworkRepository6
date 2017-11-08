@@ -8,6 +8,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity;
+using Unity.Injection;
+using Unity.Lifetime;
 
 namespace EntityFramework.Repository6.Tests
 {

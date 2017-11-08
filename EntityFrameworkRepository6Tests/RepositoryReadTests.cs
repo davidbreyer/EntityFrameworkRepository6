@@ -5,6 +5,9 @@ using Microsoft.Practices.Unity;
 using PersistentLayer.Repositories;
 using System.Linq;
 using EntityFramework.Repository6;
+using Unity.Injection;
+using Unity.Lifetime;
+using Unity;
 
 namespace EntityFramework.Repository6.Tests
 {

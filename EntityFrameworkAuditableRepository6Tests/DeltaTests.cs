@@ -8,6 +8,9 @@ using PersistentLayer.Auditable.Repositories;
 using EntityFramework.Auditable.Repository6.Tests;
 using PersistentLayer.Auditable.Entities;
 using EntityFramework.Repository6;
+using Unity;
+using Unity.Injection;
+using Unity.Lifetime;
 
 namespace EntityFramework.Repository6.Tests
 {

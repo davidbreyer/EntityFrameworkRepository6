@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntityFramework.Repository6;
+using Unity;
+using Unity.Lifetime;
+using Unity.Injection;
 
 namespace EntityFramework.Auditable.Repository6.Tests
 {

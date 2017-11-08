@@ -12,3 +12,4 @@ TestResults
 .vs/config/applicationhost.config
 *.vssettings
 /Visual Studio 2017/settings
+/.vs/EntityFrameworkRepository6/v15/Server/sqlite3

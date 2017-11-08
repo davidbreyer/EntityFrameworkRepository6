@@ -8,6 +8,9 @@ using System;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Linq;
+using Unity;
+using Unity.Injection;
+using Unity.Lifetime;
 
 namespace EntityFramework.Auditable.Repository6.Tests
 {

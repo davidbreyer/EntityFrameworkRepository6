@@ -7,6 +7,9 @@ using System.Linq;
 using EntityFramework.Auditing;
 using PersistentLayer.Auditable.Entities;
 using EntityFramework.Repository6;
+using Unity;
+using Unity.Lifetime;
+using Unity.Injection;
 
 namespace EntityFramework.Auditable.Repository6.Tests
 {
