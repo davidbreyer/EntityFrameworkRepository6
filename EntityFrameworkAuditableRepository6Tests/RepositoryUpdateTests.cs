@@ -1,11 +1,9 @@
 ﻿using EntityFramework.Auditing;
 using EntityFramework.Repository6;
-using Microsoft.Practices.Unity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersistentLayer.Auditable.Entities;
 using PersistentLayer.Auditable.Repositories;
 using System;
-using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
 using System.Linq;
 using Unity;

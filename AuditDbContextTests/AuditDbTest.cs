@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Configuration;
 using System.Data;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Entity;
 using System.Data.SqlClient;
-using System.Data.Entity.Infrastructure;
-using System.Data.SqlServerCe;
-using System.IO;
 using System.Data.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 

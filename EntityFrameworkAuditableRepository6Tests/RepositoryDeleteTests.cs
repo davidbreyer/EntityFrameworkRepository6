@@ -1,13 +1,7 @@
-﻿using Microsoft.Practices.Unity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PersistentLayer.Auditable.Entities;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersistentLayer.Auditable.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EntityFramework.Repository6;
 using Unity;
 using Unity.Lifetime;

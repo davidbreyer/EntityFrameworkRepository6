@@ -1,13 +1,7 @@
-﻿using Microsoft.Practices.Unity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PersistentLayer.Entities;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PersistentLayer.Repositories;
 using System;
-using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
-using System.Linq;
-using EntityFramework.Repository6.Interfaces;
-using EntityFramework.Repository6;
 using Unity;
 using Unity.Injection;
 using Unity.Lifetime;

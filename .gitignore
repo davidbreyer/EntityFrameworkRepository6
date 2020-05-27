@@ -13,3 +13,4 @@ TestResults
 *.vssettings
 /Visual Studio 2017/settings
 /.vs/EntityFrameworkRepository6/v15/Server/sqlite3
+/.vs/EntityFrameworkRepository6/v16/TestStore/0
