@@ -1,7 +1,12 @@
 version: 1.0.{build}
-image: Visual Studio 2017
+image: Visual Studio 2022
 before_build:
 - cmd: nuget restore
+- cmd: dotnet restore EntityFrameworkCoreRepository\EntityFramework.Repository.Core.csproj
+- cmd: dotnet restore PersistentLayerCore\PersistentLayerCore.csproj
+- cmd: dotnet restore EntityFrameworkCoreRepositoryTests\EntityFramework.Repository.Core.Tests.csproj
 build:
   project: EntityFrameworkRepository6.sln
   verbosity: minimal
+test_script:
+- cmd: dotnet test EntityFrameworkCoreRepositoryTests\EntityFramework.Repository.Core.Tests.csproj
