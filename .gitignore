@@ -3,6 +3,7 @@ packages
 bin
 obj
 TestResults
+.nuget
 
 #include package target files which may be required for msbuild
 !packages/*.targets
