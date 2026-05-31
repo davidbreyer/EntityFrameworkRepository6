@@ -139,6 +139,38 @@ SQLite in-memory is the better default because it exercises relational behavior 
 
 ## Suggested Migration Phases
 
+### Alternative: compatibility facade first
+
+Because many existing apps depend on this package, the lowest-friction migration may be to create a .NET 10 / EF Core 10 compatibility facade instead of asking every app to immediately remove the repository pattern.
+
+The facade would keep most existing public shapes:
+
+- `IBaseRepository<C, T>`
+- `BaseRepository<C, T>`
+- `IDatabaseFactory<C>`
+- `Find`, `FindAsync`, `FindBy`, `FindByReadOnly`
+- `Add`, `Delete`, `Update`, `Save`, `SaveAsync`
+- `Count`, `CountAsync`, `Exists`
+
+The implementation would delegate directly to EF Core APIs. In other words, it would be a pass-through library that preserves call sites while moving the underlying dependency from EF6 to EF Core.
+
+Recommended compromises:
+
+- Keep `Delta<T>` only if it is needed for binary/source compatibility, but do not design around it.
+- Drop the auditable projects from the first EF Core version.
+- Replace `DatabaseFactory<C>(string connectionString)` with one or more EF Core-friendly factory options:
+  - `DatabaseFactory(Func<C> createContext)`
+  - `DatabaseFactory(DbContextOptions<C> options)`
+  - or preferably let consuming apps register repositories with normal dependency injection and pass `DbContext` directly.
+- Keep the old method names even where EF Core already has direct equivalents, so consuming apps can upgrade package references first and clean up patterns later.
+
+This gives a two-step migration path:
+
+1. Replace EF6 package usage with the EF Core-compatible package and make the smallest app changes required for `DbContext` construction/provider setup.
+2. Gradually remove repository usage from each app over time where it is easy and worthwhile.
+
+This is likely the safest path if many apps depend on the library.
+
 ### Phase 1: Produce a minimal EF Core package
 
 Scope:
